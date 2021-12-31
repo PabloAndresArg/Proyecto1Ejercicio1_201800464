@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+    <title>Puzzle Best First</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script type="text/javascript" src="myscript.js"></script>
+
+</head>
+
+<body>
+
+    <ul>
+        <li>
+            ORDEN DE SUCESORES
+            <ul>
+                <li>
+                    arriba
+                </li>
+                <li>
+                    izquierda
+                </li>
+                <li>
+                    abajo
+                </li>
+                <li>
+                    derecha
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <center>
+        <h1>Pablo Andres Argueta Hernandez</h1>
+        <h2>201800464</h2>
+    </center>
+
+    <div id="mynetwork"></div>
+    <script type="text/javascript">
+        var container = document.getElementById("mynetwork");
+        var DOTstring = puzzle()
+        var parsedData = vis.parseDOTNetwork(DOTstring);
+        var data = {
+            nodes: parsedData.nodes,
+            edges: parsedData.edges
+        }
+        var options = {
+            nodes: {
+                color: 'green',
+            },
+            layout: {
+                hierarchical: {
+                    levelSeparation: 100,
+                    nodeSpacing: 100,
+                    parentCentralization: true,
+                    direction: 'UD',
+                    sortMethod: 'directed',
+                    shakeTowards: 'roots'
+                },
+            },
+        };
+        var network = new vis.Network(container, data, options);
+    </script>
+</body>
+
+</html>
